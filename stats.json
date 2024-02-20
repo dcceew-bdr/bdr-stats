@@ -1,0 +1,194 @@
+{
+  "head" : {
+    "vars" : [
+      "rg",
+      "op",
+      "val",
+      "t"
+    ]
+  },
+  "results" : {
+    "bindings" : [
+      {
+        "rg" : {
+          "type" : "uri",
+          "value" : "http://example.com/scale-5000"
+        },
+        "op" : {
+          "type" : "uri",
+          "value" : "http://example.com/DatasetsCount"
+        },
+        "val" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "51"
+        },
+        "t" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+          "type" : "literal",
+          "value" : "2024-02-15T04:13:31.330Z"
+        }
+      },
+      {
+        "rg" : {
+          "type" : "uri",
+          "value" : "http://example.com/scale-5000"
+        },
+        "op" : {
+          "type" : "uri",
+          "value" : "http://example.com/SamplesCount"
+        },
+        "val" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "5000"
+        },
+        "t" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+          "type" : "literal",
+          "value" : "2024-02-15T04:13:31.330Z"
+        }
+      },
+      {
+        "rg" : {
+          "type" : "uri",
+          "value" : "http://example.com/scale-5000"
+        },
+        "op" : {
+          "type" : "uri",
+          "value" : "http://example.com/ObservationsCount"
+        },
+        "val" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "5201"
+        },
+        "t" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+          "type" : "literal",
+          "value" : "2024-02-15T04:13:31.330Z"
+        }
+      },
+      {
+        "rg" : {
+          "type" : "uri",
+          "value" : "http://example.com/scale-3000"
+        },
+        "op" : {
+          "type" : "uri",
+          "value" : "http://example.com/DatasetsCount"
+        },
+        "val" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "31"
+        },
+        "t" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+          "type" : "literal",
+          "value" : "2024-02-15T04:13:31.330Z"
+        }
+      },
+      {
+        "rg" : {
+          "type" : "uri",
+          "value" : "http://example.com/scale-3000"
+        },
+        "op" : {
+          "type" : "uri",
+          "value" : "http://example.com/SamplesCount"
+        },
+        "val" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "3000"
+        },
+        "t" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+          "type" : "literal",
+          "value" : "2024-02-15T04:13:31.330Z"
+        }
+      },
+      {
+        "rg" : {
+          "type" : "uri",
+          "value" : "http://example.com/scale-3000"
+        },
+        "op" : {
+          "type" : "uri",
+          "value" : "http://example.com/ObservationsCount"
+        },
+        "val" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "3121"
+        },
+        "t" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+          "type" : "literal",
+          "value" : "2024-02-15T04:13:31.330Z"
+        }
+      },
+      {
+        "rg" : {
+          "type" : "uri",
+          "value" : "http://example.com/scale-500"
+        },
+        "op" : {
+          "type" : "uri",
+          "value" : "http://example.com/DatasetsCount"
+        },
+        "val" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "6"
+        },
+        "t" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+          "type" : "literal",
+          "value" : "2024-02-15T04:13:31.330Z"
+        }
+      },
+      {
+        "rg" : {
+          "type" : "uri",
+          "value" : "http://example.com/scale-500"
+        },
+        "op" : {
+          "type" : "uri",
+          "value" : "http://example.com/SamplesCount"
+        },
+        "val" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "500"
+        },
+        "t" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+          "type" : "literal",
+          "value" : "2024-02-15T04:13:31.330Z"
+        }
+      },
+      {
+        "rg" : {
+          "type" : "uri",
+          "value" : "http://example.com/scale-500"
+        },
+        "op" : {
+          "type" : "uri",
+          "value" : "http://example.com/ObservationsCount"
+        },
+        "val" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "521"
+        },
+        "t" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+          "type" : "literal",
+          "value" : "2024-02-15T04:13:31.330Z"
+        }
+      }
+    ]
+  }
+}
