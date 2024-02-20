@@ -1,6 +1,6 @@
 const useTestData = false; // Comment out when using test data
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     // Assume useTestData toggles between local and remote data
     const jsonUrl = useTestData ? 'stats.json' : 'https://s3.ap-southeast-2.amazonaws.com/stats.bdrtesting.net/stats.json';
 
@@ -15,6 +15,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 function mapJsonToData(jsonData) {
     return jsonData.results.bindings.map(binding => ({
+        dataset: binding.rg.value,
         class: mapOpUriToClass(binding.op.value),
         count: binding.val.value,
         timestamp: binding.t.value
@@ -23,11 +24,11 @@ function mapJsonToData(jsonData) {
 
 function mapOpUriToClass(uri) {
     const mapping = {
-        "http://example.com/DatasetsCount": "TERN RDFDataset",
-        "http://example.com/SamplesCount": "TERN Sample",
-        "http://example.com/ObservationsCount": "TERN Observation"
+        "http://example.com/DatasetsCount": {label: "TERN RDFDataset", uri: "https://w3id.org/tern/ontologies/tern/RDFDataset"},
+        "http://example.com/SamplesCount": {label: "TERN Sample", uri: "https://w3id.org/tern/ontologies/tern/Sample"},
+        "http://example.com/ObservationsCount": {label: "TERN Observation", uri: "https://w3id.org/tern/ontologies/tern/Observation"}
     };
-    return mapping[uri] || "Unknown Class";
+    return mapping[uri] ? `<a href="${mapping[uri].uri}" target="_blank">${mapping[uri].label}</a>` : "Unknown Class";
 }
 
 function updateTable(data) {
@@ -36,14 +37,14 @@ function updateTable(data) {
 
     data.forEach(item => {
         const tr = document.createElement('tr');
-        tr.innerHTML = `<td>${item.class}</td><td>${item.count}</td><td>-</td>`;
+        tr.innerHTML = `<td>${item.dataset}</td><td>${item.class}</td><td>${item.count}</td><td>-</td>`;
         tbody.appendChild(tr);
     });
 }
+
 
 function updateTimestamp(jsonData) {
     // Find the most recent timestamp in jsonData
     let mostRecentTimestamp = new Date(Math.max(...jsonData.results.bindings.map(e => new Date(e.t.value))));
     document.getElementById('updatedTime').textContent = `Updated: ${mostRecentTimestamp.toLocaleString()}`;
 }
-
