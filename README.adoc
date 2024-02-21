@@ -1,0 +1,4 @@
+# bdr-stats
+
+This repository contains code - queries, infracode etc - to calculate statistics for Biodiversity Data Repository data which is, initially, displayed online at http://stats.bdrtesting.net.
+
