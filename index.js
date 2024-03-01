@@ -24,9 +24,9 @@ function mapJsonToData(jsonData) {
 
 function mapOpUriToClass(uri) {
     const mapping = {
-        "http://example.com/DatasetsCount": {label: "TERN RDFDataset", uri: "https://w3id.org/tern/ontologies/tern/RDFDataset"},
-        "http://example.com/SamplesCount": {label: "TERN Sample", uri: "https://w3id.org/tern/ontologies/tern/Sample"},
-        "http://example.com/ObservationsCount": {label: "TERN Observation", uri: "https://w3id.org/tern/ontologies/tern/Observation"}
+        "https://example.com/DatasetsCount": {label: "TERN RDFDataset", uri: "https://w3id.org/tern/ontologies/tern/RDFDataset"},
+        "https://example.com/SamplesCount": {label: "TERN Sample", uri: "https://w3id.org/tern/ontologies/tern/Sample"},
+        "https://example.com/ObservationsCount": {label: "TERN Observation", uri: "https://w3id.org/tern/ontologies/tern/Observation"}
     };
     return mapping[uri] ? `<a href="${mapping[uri].uri}" target="_blank">${mapping[uri].label}</a>` : "Unknown Class";
 }
