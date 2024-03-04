@@ -4,24 +4,28 @@ PREFIX schema: <https://schema.org/>
 PREFIX sosa: <http://www.w3.org/ns/sosa/>
 PREFIX tern: <https://w3id.org/tern/ontologies/tern/>
 PREFIX unit: <http://qudt.org/vocab/unit/>
+PREFIX dcterms: <http://purl.org/dc/terms/>
 
-SELECT ?category (SUM(?val) AS ?total) (NOW() as ?query_run_time)
+SELECT ?rg_uri ?rg_label (SUM(?val) AS ?total) (NOW() as ?query_run_time)
 WHERE {
     GRAPH olis:SystemGraph {
         ?rg a olis:RealGraph ;
             sosa:isFeatureOfInterestOf [
-                sosa:observedProperty ?category ;
-                sosa:hasResult [
-                    schema:value ?val
-                ]
-            ]
+            sosa:observedProperty ?rg_uri ;
+            sosa:hasResult [schema:value ?val]
+        ].
     }
+    # Define category URIs to labels mapping
+    BIND(IF(?rg_uri = <https://example.com/DatasetsCount>, "Datasets",
+            IF(?rg_uri = <https://example.com/SamplesCount>, "Samples",
+                IF(?rg_uri = <https://example.com/ObservationsCount>, "Observations",
+                    "Unknown"))) AS ?rg_label)
     BIND(
-        IF(?category = <https://example.com/DatasetsCount>, 1,
-          IF(?category = <https://example.com/SamplesCount>, 2,
-          IF(?category = <https://example.com/ObservationsCount>, 3,
-          4))) AS ?sortOrder
+        IF(?rg_uri = <https://example.com/DatasetsCount>, 1,
+            IF(?rg_uri = <https://example.com/SamplesCount>, 2,
+                IF(?rg_uri = <https://example.com/ObservationsCount>, 3,
+                    4))) AS ?sortOrder
     )
 }
-GROUP BY ?category ?sortOrder
+GROUP BY ?rg_label ?rg_uri ?sortOrder
 ORDER BY ?sortOrder
