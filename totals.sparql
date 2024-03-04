@@ -5,7 +5,7 @@ PREFIX sosa: <http://www.w3.org/ns/sosa/>
 PREFIX tern: <https://w3id.org/tern/ontologies/tern/>
 PREFIX unit: <http://qudt.org/vocab/unit/>
 
-SELECT (?op AS ?categry) (SUM(?val) AS ?total) (NOW() as ?query_run_time)
+SELECT (?op AS ?category) (SUM(?val) AS ?total) (NOW() as ?query_run_time)
 WHERE {
     GRAPH olis:SystemGraph {
         ?rg a olis:RealGraph ;
