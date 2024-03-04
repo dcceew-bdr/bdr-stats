@@ -5,15 +5,23 @@ PREFIX sosa: <http://www.w3.org/ns/sosa/>
 PREFIX tern: <https://w3id.org/tern/ontologies/tern/>
 PREFIX unit: <http://qudt.org/vocab/unit/>
 
-SELECT (?op AS ?category) (SUM(?val) AS ?total) (NOW() as ?query_run_time)
+SELECT ?category (SUM(?val) AS ?total) (NOW() as ?query_run_time)
 WHERE {
     GRAPH olis:SystemGraph {
         ?rg a olis:RealGraph ;
             sosa:isFeatureOfInterestOf [
-            sosa:observedProperty ?op ;
-            sosa:hasResult [
-    			schema:value ?val
-	        ]
-        ]
+                sosa:observedProperty ?category ;
+                sosa:hasResult [
+                    schema:value ?val
+                ]
+            ]
     }
-} GROUP BY ?op
+    BIND(
+        IF(?category = <https://example.com/DatasetsCount>, 1,
+          IF(?category = <https://example.com/SamplesCount>, 2,
+          IF(?category = <https://example.com/ObservationsCount>, 3,
+          4))) AS ?sortOrder
+    )
+}
+GROUP BY ?category ?sortOrder
+ORDER BY ?sortOrder

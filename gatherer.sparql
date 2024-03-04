@@ -1,22 +1,29 @@
-# Gathers the stats from the System Graph
-
 PREFIX ex: <http://example.com/>
 PREFIX olis: <https://olis.dev/>
 PREFIX schema: <https://schema.org/>
 PREFIX sosa: <http://www.w3.org/ns/sosa/>
 PREFIX tern: <https://w3id.org/tern/ontologies/tern/>
 PREFIX unit: <http://qudt.org/vocab/unit/>
+PREFIX dcterms: <http://purl.org/dc/terms/>
 
-SELECT ?rg ?op ?val ?t (NOW() as ?query_run_time)
+SELECT
+  ?rg_uri
+  ?rg_label
+  (SUM(IF(?op = <https://example.com/ObservationsCount>, ?val, 0)) AS ?ObservationsCount)
+  (SUM(IF(?op = <https://example.com/DatasetsCount>, ?val, 0)) AS ?DatasetsCount)
+  (SUM(IF(?op = <https://example.com/SamplesCount>, ?val, 0)) AS ?SamplesCount)
+  (NOW() as ?query_run_time)
 WHERE {
     GRAPH olis:SystemGraph {
-        ?rg a olis:RealGraph ;
+        ?rg_uri a olis:RealGraph ;
             sosa:isFeatureOfInterestOf [
-            sosa:observedProperty ?op ;
-            sosa:hasResult [
-    			schema:value ?val        
-	        ] ;
-	       sosa:resultTime ?t ;
-        ]
+                sosa:observedProperty ?op ;
+                sosa:hasResult [
+                    schema:value ?val
+                ] ;
+                sosa:resultTime ?t ;
+            ]
     }
+    OPTIONAL { ?rg_uri dcterms:title ?rg_label }
 }
+GROUP BY ?rg_uri ?rg_label
