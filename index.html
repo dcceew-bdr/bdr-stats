@@ -6,60 +6,77 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="top"></div>
-    <div id="main-nav">
-        <a href="http://bdrtesting.net">BDR Homepage</a>
-        <a href="http://stats.bdrtesting.net">BDR Stats</a>
-        <a href="https://abis.dev.kurrawong.ai">ABIS Portal</a>
-    </div>
-    <div id="content">
-        <h1 class="text-4xl pb-4">BDR Stats</h1>
-        <section style="min-width:500px; max-width: 40%">
-            <h3>About</h3>
-            <p>
-                This web page contains statistics about data within <a href="https://bdrtesting.net" class="">Biodiversity Data Repository (BDR)</a> managed by the <a href="https://www.dcceew.gov.au">Department of Climate Change, Energy, the Environment and Water (DCCEEW)</a>.
-            </p>
-            <p>
-                For any BDR-specific questions, please contact:
-            </p>
-            <p style="margin-left:100px;">
-                <strong>BDR Team</strong><br />
-                <a href="mailto:bdr@dcceew.gov.au">bdr@dcceew.gov.au</a>
-            </p>
-        </section>
-        <section>
-            <h3>Statistics</h3>
-            <p id="updatedTime">Updated: --</p>
-            <table id="stats">
-                <thead>
-                    <tr>
-                        <th>Dataset</th>
-                        <th>Class</th>
-                        <th>Count</th>
-                        <th>Notes</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- Data rows will be populated here by the JavaScript -->
-                </tbody>
-            </table>
-        </section>
-    </div>
-    <footer>
+<div id="top"></div>
+<div id="main-nav">
+    <a href="http://bdrtesting.net">BDR Homepage</a>
+    <a href="http://stats.bdrtesting.net">BDR Stats</a>
+    <a href="https://abis.dev.kurrawong.ai">ABIS Portal</a>
+</div>
+<div id="content">
+    <h1 class="text-4xl pb-4">BDR Stats</h1>
+    <section style="min-width:500px; max-width: 40%">
+        <h3>About</h3>
         <p>
-            <a href="https://abis.dev.kurrawong.net/about/contact">Contact us</a> |
-            <a href="https://abis.dev.kurrawong.net/about/commitment/accessibility">Accessibility</a> |
-            <a href="https://abis.dev.kurrawong.net/about/disclaimer">Disclaimer</a> |
-            <a href="https://abis.dev.kurrawong.net/about/commitment/privacy">Privacy</a> |
-            <a href="https://abis.dev.kurrawong.net/about/reporting/freedom-of-information">FOI</a>
+            This web page contains statistics about data within <a href="https://bdrtesting.net" class="">Biodiversity
+            Data Repository (BDR)</a> managed by the <a href="https://www.dcceew.gov.au">Department of Climate Change,
+            Energy, the Environment and Water (DCCEEW)</a>.
         </p>
         <p>
-            <a href="https://abis.dev.kurrawong.net/about/copyright">&copy; Department of Climate Change, Energy, the Environment and Water</a>
+            For any BDR-specific questions, please contact:
         </p>
-        <p>
-            We acknowledge the Traditional Owners of Country throughout Australia and recognise their continuing connection to land, waters and culture. We pay our respects to their Elders past and present.
+        <p style="margin-left:100px;">
+            <strong>BDR Team</strong><br/>
+            <a href="mailto:bdr@dcceew.gov.au">bdr@dcceew.gov.au</a>
         </p>
-    </footer>
-    <script src="index.js"></script>
+    </section>
+    <section>
+        <h3>Total Statistics <span id="totalsLastUpdatedTime" style="font-style: italic;"></span></h3>
+        <table id="totals">
+            <thead>
+            <tr>
+                <th>Category</th>
+                <th>Total Count</th>
+            </tr>
+            </thead>
+            <tbody>
+            <!-- Total stats rows will be populated here by the JavaScript -->
+            </tbody>
+        </table>
+    </section>
+    <section>
+        <h3>Statistics <span id="statsLastUpdatedTime" style="font-style: italic;"></span></h3>
+        <table id="stats">
+            <thead>
+            <tr>
+                <th>Dataset</th>
+                <th>Class</th>
+                <th>Count</th>
+                <th>Notes</th>
+            </tr>
+            </thead>
+            <tbody>
+            <!-- Data rows will be populated here by the JavaScript -->
+            </tbody>
+        </table>
+    </section>
+</div>
+<footer>
+    <p>
+        <a href="https://abis.dev.kurrawong.net/about/contact">Contact us</a> |
+        <a href="https://abis.dev.kurrawong.net/about/commitment/accessibility">Accessibility</a> |
+        <a href="https://abis.dev.kurrawong.net/about/disclaimer">Disclaimer</a> |
+        <a href="https://abis.dev.kurrawong.net/about/commitment/privacy">Privacy</a> |
+        <a href="https://abis.dev.kurrawong.net/about/reporting/freedom-of-information">FOI</a>
+    </p>
+    <p>
+        <a href="https://abis.dev.kurrawong.net/about/copyright">&copy; Department of Climate Change, Energy, the
+            Environment and Water</a>
+    </p>
+    <p>
+        We acknowledge the Traditional Owners of Country throughout Australia and recognise their continuing connection
+        to land, waters and culture. We pay our respects to their Elders past and present.
+    </p>
+</footer>
+<script src="index.js"></script>
 </body>
 </html>
