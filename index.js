@@ -91,21 +91,21 @@ function updateTotalsTable(tableSelector, jsonData) {
 function mapCategoryUriToLabel(uri) {
     // Example mapping function
     const mapping = {
-        "https://example.com/ObservationsCount": "Observations",
-        "https://example.com/DatasetsCount": "Datasets",
-        "https://example.com/SamplesCount": "Samples"
+        "http://example.com/ObservationsCount": "Observations",
+        "http://example.com/DatasetsCount": "Datasets",
+        "http://example.com/SamplesCount": "Samples"
     };
     return mapping[uri] || "Unknown Category";
 }
 
 function mapOpUriToClass(uri) {
     const mapping = {
-        "https://example.com/DatasetsCount": {
+        "http://example.com/DatasetsCount": {
             label: "TERN RDFDataset",
             uri: "https://w3id.org/tern/ontologies/tern/RDFDataset"
         },
-        "https://example.com/SamplesCount": {label: "TERN Sample", uri: "https://w3id.org/tern/ontologies/tern/Sample"},
-        "https://example.com/ObservationsCount": {
+        "http://example.com/SamplesCount": {label: "TERN Sample", uri: "https://w3id.org/tern/ontologies/tern/Sample"},
+        "http://example.com/ObservationsCount": {
             label: "TERN Observation",
             uri: "https://w3id.org/tern/ontologies/tern/Observation"
         }

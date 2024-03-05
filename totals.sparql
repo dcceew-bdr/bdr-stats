@@ -16,14 +16,14 @@ WHERE {
         ].
     }
     # Define category URIs to labels mapping
-    BIND(IF(?rg_uri = <https://example.com/DatasetsCount>, "Datasets",
-            IF(?rg_uri = <https://example.com/SamplesCount>, "Samples",
-                IF(?rg_uri = <https://example.com/ObservationsCount>, "Observations",
+    BIND(IF(?rg_uri = <http://example.com/DatasetsCount>, "Datasets",
+            IF(?rg_uri = <http://example.com/SamplesCount>, "Samples",
+                IF(?rg_uri = <http://example.com/ObservationsCount>, "Observations",
                     "Unknown"))) AS ?rg_label)
     BIND(
-        IF(?rg_uri = <https://example.com/DatasetsCount>, 1,
-            IF(?rg_uri = <https://example.com/SamplesCount>, 2,
-                IF(?rg_uri = <https://example.com/ObservationsCount>, 3,
+        IF(?rg_uri = <http://example.com/DatasetsCount>, 1,
+            IF(?rg_uri = <http://example.com/SamplesCount>, 2,
+                IF(?rg_uri = <http://example.com/ObservationsCount>, 3,
                     4))) AS ?sortOrder
     )
 }
