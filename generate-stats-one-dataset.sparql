@@ -1,0 +1,73 @@
+# Generates the statistics for one dataset (string replace XXX) and inserts it into the System Graph
+
+PREFIX ex: <http://example.com/>
+PREFIX olis: <https://olis.dev/>
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+PREFIX schema: <https://schema.org/>
+PREFIX tern: <https://w3id.org/tern/ontologies/tern/>
+PREFIX unit: <http://qudt.org/vocab/unit/>
+
+INSERT {
+    GRAPH olis:SystemGraph {
+        ?g
+            a olis:RealGraph ;
+            sosa:isFeatureOfInterestOf [
+                a sosa:Observation ;
+                sosa:observedProperty ex:DatasetsCount ;
+                sosa:resultTime ?now ;
+                sosa:hasResult [
+                    a sosa:Result ;
+                    schema:value ?datasets ;
+                    schema:unitCode unit:UNITLESS ;
+                ] ;
+            ] ,
+            [
+                a sosa:Observation ;
+                sosa:observedProperty ex:SamplesCount ;
+                sosa:resultTime ?now ;
+                sosa:hasResult [
+                    a sosa:Result ;
+                    schema:value ?samples ;
+                    schema:unitCode unit:UNITLESS ;
+                ] ;
+            ] ,
+            [
+                a sosa:Observation ;
+                sosa:observedProperty ex:ObservationsCount ;
+                sosa:resultTime ?now ;
+                sosa:hasResult [
+                    a sosa:Result ;
+                    schema:value ?observations ;
+                    schema:unitCode unit:UNITLESS ;
+                ] ;
+            ] ;
+        .
+    }
+}
+WHERE {
+    BIND (NOW() AS ?now)
+    BIND (<XXX> AS ?g)
+    
+    GRAPH ?g {
+        {
+            SELECT (COUNT(?o) AS ?observations)
+            WHERE { 
+                ?o a tern:Observation
+            }
+        }
+
+        {
+            SELECT (COUNT(?d) AS ?datasets)
+            WHERE {
+                ?d a tern:RDFDataset
+            }
+        }
+
+        {
+            SELECT (COUNT(?s) AS ?samples)
+            WHERE {
+                ?s a tern:Sample
+            }
+        }
+    }
+}
