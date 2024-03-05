@@ -59,7 +59,6 @@ function updateStatsTable(tableSelector, jsonData) {
             <td>${datasetsCount}</td>
             <td>${samplesCount}</td>
             <td>${observationsCount}</td>
-            <td>-</td> <!-- Placeholder for Notes -->
         </tr>`;
 
         tbody.innerHTML += rowHtml;
