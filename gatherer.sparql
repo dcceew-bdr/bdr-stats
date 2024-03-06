@@ -21,7 +21,6 @@ WHERE {
                 sosa:hasResult [
                     schema:value ?val
                 ] ;
-                sosa:resultTime ?t ;
             ]
     }
     OPTIONAL { ?rg_uri dcterms:title ?rg_label }
