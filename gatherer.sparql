@@ -23,6 +23,8 @@ WHERE {
                 ] ;
             ]
     }
-    OPTIONAL { ?rg_uri dcterms:title ?rg_label }
+  OPTIONAL { ?rg_uri dcterms:title ?rg_label_title }
+  OPTIONAL { ?rg_uri dcterms:identifier ?rg_label_id }
+  BIND(COALESCE(?rg_label_title, ?rg_label_id) AS ?rg_label)
 }
 GROUP BY ?rg_uri ?rg_label
