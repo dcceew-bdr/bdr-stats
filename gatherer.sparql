@@ -13,6 +13,7 @@ SELECT
   (SUM(IF(?op = <http://example.com/DatasetsCount>, ?val, 0)) AS ?DatasetsCount)
   (SUM(IF(?op = <http://example.com/SamplesCount>, ?val, 0)) AS ?SamplesCount)
   (NOW() as ?query_run_time)
+  ?dateCreated
 WHERE {
     GRAPH olis:SystemGraph {
         ?rg_uri a olis:RealGraph ;
@@ -25,6 +26,7 @@ WHERE {
     }
   OPTIONAL { ?rg_uri dcterms:title ?rg_label_title }
   OPTIONAL { ?rg_uri dcterms:identifier ?rg_label_id }
+    OPTIONAL { ?rg_uri sdo:dateCreated ?dateCreated }
   BIND(COALESCE(?rg_label_title, ?rg_label_id) AS ?rg_label)
 }
 GROUP BY ?rg_uri ?rg_label
