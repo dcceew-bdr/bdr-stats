@@ -34,12 +34,12 @@ th, td {
     text-align: left;
 }
 
-th.sortable.sort-descending::after {
-    content: "▼";
+th.sortable.sort-ascending::after {
+    content: "\25B2"; /* Represents the up arrow (▲) */
 }
 
-th.sortable.sort-ascending::after {
-    content: "▲";
+th.sortable.sort-descending::after {
+    content: "\25BC"; /* Represents the down arrow (▼) */
 }
 
 thead {
