@@ -27,7 +27,7 @@ WHERE {
     }
   OPTIONAL { ?rg_uri dcterms:title ?rg_label_title }
   OPTIONAL { ?rg_uri dcterms:identifier ?rg_label_id }
-    OPTIONAL { ?rg_uri sdo:dateCreated ?dateCreated }
+  OPTIONAL { ?rg_uri sdo:dateCreated ?dateCreated }
   BIND(COALESCE(?rg_label_title, ?rg_label_id) AS ?rg_label)
 }
-GROUP BY ?rg_uri ?rg_label
+GROUP BY ?rg_uri ?rg_label ?dateCreated
