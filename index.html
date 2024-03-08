@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <title>BDR Stats</title>
     <link rel="stylesheet" href="style.css">
+    <!-- Include Handlebars library via CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.8/handlebars.min.js"></script>
 </head>
 <body>
 <div id="top"></div>
@@ -38,11 +40,19 @@
                 <th>Total Count</th>
             </tr>
             </thead>
-            <tbody>
-            <!-- Total stats rows will be populated here by the JavaScript -->
+            <tbody id="totals-template-target">
+            <!-- Totals stats rows will be populated here by the JavaScript -->
             </tbody>
         </table>
     </section>
+    <script id="totals-template" type="text/x-handlebars-template">
+        {{#each items}}
+        <tr>
+            <td>{{category}}</td>
+            <td>{{totalCount}}</td>
+        </tr>
+        {{/each}}
+    </script>
     <section>
         <h3>Dataset Statistics <span id="statsLastUpdatedTime" style="font-style: italic;"></span></h3>
         <table id="stats">
@@ -52,32 +62,30 @@
                 <th>RDF Datasets</th>
                 <th>Samples</th>
                 <th>Observations</th>
+                <th onclick="sortColumn('stats', 4)" class="sortable">Load Date</th>
             </tr>
             </thead>
-            <tbody>
-            <!-- Data rows will be populated here by the JavaScript -->
+            <tbody id="stats-template-target">
+            <!-- Dataset stats rows will be populated here by the JavaScript -->
             </tbody>
         </table>
     </section>
-
+    <script id="stats-template" type="text/x-handlebars-template">
+        {{#each items}}
+        <tr>
+            <td><a href="{{datasetUri}}" target="_blank">{{datasetLabel}}</a></td>
+            <td>{{rdfDatasets}}</td>
+            <td>{{samples}}</td>
+            <td>{{observations}}</td>
+            <td>{{dateCreated}}</td>
+        </tr>
+        {{/each}}
+    </script>
 </div>
 <footer>
-    <p>
-        <a href="https://abis.dev.kurrawong.net/about/contact">Contact us</a> |
-        <a href="https://abis.dev.kurrawong.net/about/commitment/accessibility">Accessibility</a> |
-        <a href="https://abis.dev.kurrawong.net/about/disclaimer">Disclaimer</a> |
-        <a href="https://abis.dev.kurrawong.net/about/commitment/privacy">Privacy</a> |
-        <a href="https://abis.dev.kurrawong.net/about/reporting/freedom-of-information">FOI</a>
-    </p>
-    <p>
-        <a href="https://abis.dev.kurrawong.net/about/copyright">&copy; Department of Climate Change, Energy, the
-            Environment and Water</a>
-    </p>
-    <p>
-        We acknowledge the Traditional Owners of Country throughout Australia and recognise their continuing connection
-        to land, waters and culture. We pay our respects to their Elders past and present.
-    </p>
+    <!-- Your footer content -->
 </footer>
+
 <script src="index.js"></script>
 </body>
 </html>

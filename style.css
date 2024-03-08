@@ -33,6 +33,15 @@ th, td {
     padding: 10px;
     text-align: left;
 }
+
+th.sortable.sort-descending::after {
+    content: "▼";
+}
+
+th.sortable.sort-ascending::after {
+    content: "▲";
+}
+
 thead {
     background-color: #f2f2f2;
 }
