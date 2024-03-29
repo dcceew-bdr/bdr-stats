@@ -1,0 +1,32 @@
+# Get the names of species observed in {{y}} datasets by Agent {{x}}
+
+# Test: {{x}} = http://createme.org/provider/SA-Department-of-Environment, {{y}} = 10, result is 562
+
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX role: <http://def.isotc211.org/iso19115/-1/2018/CitationAndResponsiblePartyInformation/code/CI_RoleCode/>
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+
+SELECT DISTINCT ?v
+WHERE {
+  {
+    SELECT ?d
+    WHERE {
+      GRAPH ?d {
+        ?d prov:qualifiedAttribution [
+          prov:hadRole role:resourceProvider ;
+          prov:agent <{{x}}> ;
+        ] .
+
+        FILTER(ISIRI(?d))
+      }
+    }
+    LIMIT {{y}}
+  }
+  GRAPH ?d {
+	?o
+      sosa:usedProcedure <http://linked.data.gov.au/def/tern-cv/2eef4e87-beb3-449a-9251-f59f5c07d653> ;
+      sosa:hasResult/rdf:value ?v
+  }
+}
+ORDER BY ?v

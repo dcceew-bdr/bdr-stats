@@ -1,0 +1,18 @@
+# Get all the datasets contributed by Agent {{x}}
+
+# Test: {{x}} = http://createme.org/provider/SA-Department-of-Environment, result is 993
+
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX role: <http://def.isotc211.org/iso19115/-1/2018/CitationAndResponsiblePartyInformation/code/CI_RoleCode/>
+
+SELECT ?d
+WHERE {
+  GRAPH ?g {
+    ?d prov:qualifiedAttribution [
+      prov:hadRole role:resourceProvider ;
+      prov:agent <{{x}}> ;
+    ] .
+
+    FILTER(ISIRI(?d))
+  }
+}

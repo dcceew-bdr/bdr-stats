@@ -1,0 +1,16 @@
+# Get all the names of species observed within dataset {{x}}
+
+# Test: {{x}} = https://linked.data.gov.au/dataset/bdr/dataset/5f193849-416c-4309-9582-436be2804352, result is 3
+
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+
+SELECT DISTINCT ?v
+WHERE {
+  GRAPH <{{x}}> {
+	?o
+      sosa:usedProcedure <http://linked.data.gov.au/def/tern-cv/2eef4e87-beb3-449a-9251-f59f5c07d653> ;
+      sosa:hasResult/rdf:value ?v
+  }
+}
+ORDER BY ?v
