@@ -1,0 +1,62 @@
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX ex: <http://example.com/>
+PREFIX olis: <https://olis.dev/>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX schema: <https://schema.org/>
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+PREFIX unit: <http://qudt.org/vocab/unit/>
+PREFIX tern: <https://w3id.org/tern/ontologies/tern/>
+PREFIX sdo: <http://schema.org/>
+
+INSERT {
+    GRAPH <https://olis.dev/SystemGraph> {
+        ?g a olis:RealGraph ;
+        sdo:dateCreated ?currentTime ;
+        sosa:isFeatureOfInterestOf [
+                a sosa:Observation ;
+            sosa:observedProperty ?countType ;
+            sosa:hasResult [
+                    a sosa:Result ;
+                schema:value ?count ;
+                schema:unitCode unit:UNITLESS
+            ]
+        ] ;
+        prov:qualifiedDerivation [
+                prov:entity ?uuid ;
+            rdfs:comment "The UUID-based named folder that this dataset was derived from"
+        ] .
+    }
+}
+#SELECT ?uuid ?currentTime ?g ?count ?countType
+WHERE {
+    VALUES (?x ?countType) {
+        (tern:Observation ex:ObservationsCount)
+        (tern:RDFDataset ex:DatasetsCount)
+        (tern:Sample ex:SamplesCount)
+    }
+    BIND(REPLACE(STR(?g), "^https://linked\\.data\\.gov\\.au/dataset/bdr/dataset/", "") AS ?uuid)
+    BIND(NOW() AS ?currentTime)
+    {
+        SELECT ?g ?x (COUNT(?x) as ?count)
+        WHERE {
+            {
+                {
+                    {
+                        SELECT ?g {
+                            ?g a tern:RDFDataset .
+                            FILTER NOT EXISTS {
+                                GRAPH <https://olis.dev/SystemGraph> {
+                                    ?g a olis:RealGraph ;
+                                }
+                            }
+                        } LIMIT 100
+                    }
+                    GRAPH ?g {
+                        ?obs a ?x .
+                    }
+                }
+            }
+        } GROUP BY ?x ?g
+    }
+}
