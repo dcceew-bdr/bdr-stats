@@ -8,7 +8,22 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.8/handlebars.min.js"></script>
 </head>
 <body>
-<div id="top"></div>
+<div id="top">
+    <div id="top-content">
+        <div id="top-content-layout">
+            <div id="top-header">
+                <div id="logo">
+                    <img src="images/dcceew-logo.svg" alt="D.C.C.E.E.W. Logo">
+                </div>
+                <div id="title">
+                    <h1>Biodiversity Data Repository<br>
+                    <small>Statistics Viewer</small>
+                    </h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <div id="main-nav">
     <a href="http://bdrtesting.net">BDR Homepage</a>
     <a href="http://stats.bdrtesting.net">BDR Stats</a>
@@ -61,6 +76,7 @@
                 <th>Dataset</th>
                 <th>RDF Datasets</th>
                 <th>Samples</th>
+                <th>Samplings</th>
                 <th>Observations</th>
                 <th onclick="sortColumn('stats', 4)" class="sortable">Load Date</th>
             </tr>
@@ -76,8 +92,9 @@
             <td><a href="{{datasetUri}}" target="_blank">{{datasetLabel}}</a></td>
             <td>{{rdfDatasets}}</td>
             <td>{{samples}}</td>
+            <td>{{samplings}}</td>
             <td>{{observations}}</td>
-            <td>{{dateCreated}}</td>
+            <td style="white-space: nowrap;">{{dateCreated}}</td>
         </tr>
         {{/each}}
     </script>

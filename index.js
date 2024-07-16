@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // This function fetches data based on the 'type' and updates the UI
     function fetchDataAndUpdateUI(type) {
-        const baseUrl = useTestData ? '' : 'https://s3.ap-southeast-2.amazonaws.com/stats.bdrtesting.net/';
+        const baseUrl = useTestData ? '' : 'https://stbdrprodstatsdorkqh.blob.core.windows.net/statscontainer/';
         const url = `${baseUrl}${type}.json`;
 
         fetch(url)
