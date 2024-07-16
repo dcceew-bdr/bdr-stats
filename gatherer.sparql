@@ -1,33 +1,33 @@
-PREFIX ex: <http://example.com/>
+PREFIX bdr-obsprops: <https://linked.data.gov.au/dataset/bdr/obsprops/>
 PREFIX olis: <https://olis.dev/>
 PREFIX schema: <https://schema.org/>
-PREFIX sdo: <http://schema.org/>
 PREFIX sosa: <http://www.w3.org/ns/sosa/>
-PREFIX tern: <https://w3id.org/tern/ontologies/tern/>
-PREFIX unit: <http://qudt.org/vocab/unit/>
 PREFIX dcterms: <http://purl.org/dc/terms/>
 
 SELECT
   ?rg_uri
   ?rg_label
-  (SUM(IF(?op = <http://example.com/ObservationsCount>, ?val, 0)) AS ?ObservationsCount)
-  (SUM(IF(?op = <http://example.com/DatasetsCount>, ?val, 0)) AS ?DatasetsCount)
-  (SUM(IF(?op = <http://example.com/SamplesCount>, ?val, 0)) AS ?SamplesCount)
+  (SUM(IF(?op = bdr-obsprops:ObservationsCount, ?val, 0)) AS ?ObservationsCount)
+  (SUM(IF(?op = bdr-obsprops:DatasetsCount, ?val, 0)) AS ?DatasetsCount)
+  (SUM(IF(?op = bdr-obsprops:SamplesCount, ?val, 0)) AS ?SamplesCount)
+  (SUM(IF(?op = bdr-obsprops:SamplingsCount, ?val, 0)) AS ?SamplingsCount)
   (NOW() as ?query_run_time)
   ?dateCreated
 WHERE {
-    GRAPH olis:SystemGraph {
-        ?rg_uri a olis:RealGraph ;
-            sosa:isFeatureOfInterestOf [
-                sosa:observedProperty ?op ;
-                sosa:hasResult [
-                    schema:value ?val
-                ] ;
-            ]
-    }
+  GRAPH olis:SystemGraph {
+    ?rg_uri sosa:isFeatureOfInterestOf [
+        sosa:observedProperty ?op ;
+        sosa:hasResult [
+          schema:value ?val
+        ] ;
+     ]
+  }
+  FILTER EXISTS {
+    ?rg_uri a olis:RealGraph .
+  }
   OPTIONAL { ?rg_uri dcterms:title ?rg_label_title }
   OPTIONAL { ?rg_uri dcterms:identifier ?rg_label_id }
-  OPTIONAL { ?rg_uri sdo:dateCreated ?dateCreated }
+  OPTIONAL { ?rg_uri schema:dateCreated ?dateCreated }
   BIND(COALESCE(?rg_label_title, ?rg_label_id) AS ?rg_label)
 }
 GROUP BY ?rg_uri ?rg_label ?dateCreated

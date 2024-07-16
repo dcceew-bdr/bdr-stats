@@ -1,7 +1,7 @@
 # Generates RDFDataset, Sample and Observation counts per graph
 # and inserts them into the System Graph as SOSA Observations on the Real Graphs
 
-PREFIX ex: <http://example.com/>
+PREFIX bdr-obsprops: <https://linked.data.gov.au/dataset/bdr/obsprops/>
 PREFIX olis: <https://olis.dev/>
 PREFIX schema: <https://schema.org/>
 PREFIX sosa: <http://www.w3.org/ns/sosa/>
@@ -14,7 +14,7 @@ INSERT {
         	a olis:RealGraph ;
 	         sosa:isFeatureOfInterestOf [
         		a sosa:Observation ;
-          		sosa:observedProperty ex:DatasetsCount ;
+          		sosa:observedProperty bdr-obsprops:DatasetsCount ;
             		sosa:resultTime ?now ;
           		sosa:hasResult [
         			a sosa:Result ;
@@ -24,7 +24,7 @@ INSERT {
     		] ,
 			[
         		a sosa:Observation ;
-          		sosa:observedProperty ex:SamplesCount ;
+          		sosa:observedProperty bdr-obsprops:SamplesCount ;
             		sosa:resultTime ?now ;
           		sosa:hasResult [
         			a sosa:Result ;
@@ -34,11 +34,21 @@ INSERT {
     		] ,
 			[
         		a sosa:Observation ;
-          		sosa:observedProperty ex:ObservationsCount ;
+          		sosa:observedProperty bdr-obsprops:ObservationsCount ;
             		sosa:resultTime ?now ;
           		sosa:hasResult [
         			a sosa:Result ;
           			schema:value ?observations ;
+             		schema:unitCode unit:UNITLESS ;
+    			] ;
+    		] ,
+    		[
+        		a sosa:Observation ;
+          		sosa:observedProperty bdr-obsprops:SamplingsCount ;
+            		sosa:resultTime ?now ;
+          		sosa:hasResult [
+        			a sosa:Result ;
+          			schema:value ?samplings ;
              		schema:unitCode unit:UNITLESS ;
     			] ;
     		] ;
@@ -72,5 +82,14 @@ WHERE {
 	            ?s a tern:Sample
             }
         } GROUP BY ?g
-    }    
+    }
+
+        {
+        SELECT ?g (COUNT(?l) AS ?samplings)
+        WHERE {
+            GRAPH ?g {
+                ?l a tern:Sampling
+            }
+        } GROUP BY ?g
+    }
 }
