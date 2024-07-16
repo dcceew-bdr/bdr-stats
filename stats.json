@@ -1,192 +1,96 @@
 {
   "head" : {
     "vars" : [
-      "rg",
-      "op",
-      "val",
-      "t"
+      "rg_uri",
+      "rg_label",
+      "ObservationsCount",
+      "DatasetsCount",
+      "SamplesCount",
+      "SamplingsCount",
+      "queryRunTime",
+      "dateCreated"
     ]
   },
   "results" : {
     "bindings" : [
-      {
-        "rg" : {
+           {
+        "rg_uri" : {
           "type" : "uri",
-          "value" : "http://example.com/scale-5000"
+          "value" : "https://linked.data.gov.au/dataset/bdr/dataset/5f193849-416c-4309-9582-436be2804352"
         },
-        "op" : {
-          "type" : "uri",
-          "value" : "http://example.com/DatasetsCount"
+        "rg_label" : {
+          "type" : "literal",
+          "value" : "SA Fauna Atlas - Southern Bell Frog (Coorong-Lower Lakes)."
         },
-        "val" : {
+        "ObservationsCount" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
-          "value" : "51"
+          "value" : "16"
         },
-        "t" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
-          "type" : "literal",
-          "value" : "2024-02-15T04:13:31.330Z"
-        }
-      },
-      {
-        "rg" : {
-          "type" : "uri",
-          "value" : "http://example.com/scale-5000"
-        },
-        "op" : {
-          "type" : "uri",
-          "value" : "http://example.com/SamplesCount"
-        },
-        "val" : {
+        "DatasetsCount" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
-          "value" : "5000"
+          "value" : "1"
         },
-        "t" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
-          "type" : "literal",
-          "value" : "2024-02-15T04:13:31.330Z"
-        }
-      },
-      {
-        "rg" : {
-          "type" : "uri",
-          "value" : "http://example.com/scale-5000"
-        },
-        "op" : {
-          "type" : "uri",
-          "value" : "http://example.com/ObservationsCount"
-        },
-        "val" : {
+        "SamplesCount" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
-          "value" : "5201"
+          "value" : "4"
         },
-        "t" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
-          "type" : "literal",
-          "value" : "2024-02-15T04:13:31.330Z"
-        }
-      },
-      {
-        "rg" : {
-          "type" : "uri",
-          "value" : "http://example.com/scale-3000"
-        },
-        "op" : {
-          "type" : "uri",
-          "value" : "http://example.com/DatasetsCount"
-        },
-        "val" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "31"
-        },
-        "t" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
-          "type" : "literal",
-          "value" : "2024-02-15T04:13:31.330Z"
-        }
-      },
-      {
-        "rg" : {
-          "type" : "uri",
-          "value" : "http://example.com/scale-3000"
-        },
-        "op" : {
-          "type" : "uri",
-          "value" : "http://example.com/SamplesCount"
-        },
-        "val" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "3000"
-        },
-        "t" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
-          "type" : "literal",
-          "value" : "2024-02-15T04:13:31.330Z"
-        }
-      },
-      {
-        "rg" : {
-          "type" : "uri",
-          "value" : "http://example.com/scale-3000"
-        },
-        "op" : {
-          "type" : "uri",
-          "value" : "http://example.com/ObservationsCount"
-        },
-        "val" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
-          "type" : "literal",
-          "value" : "3121"
-        },
-        "t" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
-          "type" : "literal",
-          "value" : "2024-02-15T04:13:31.330Z"
-        }
-      },
-      {
-        "rg" : {
-          "type" : "uri",
-          "value" : "http://example.com/scale-500"
-        },
-        "op" : {
-          "type" : "uri",
-          "value" : "http://example.com/DatasetsCount"
-        },
-        "val" : {
+        "SamplingsCount" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
           "value" : "6"
         },
-        "t" : {
+        "queryRunTime" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
           "type" : "literal",
-          "value" : "2024-02-15T04:13:31.330Z"
+          "value" : "2024-04-05T02:35:32.886Z"
+        },
+        "dateCreated" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+          "type" : "literal",
+          "value" : "2024-03-25T03:53:47.130Z"
         }
       },
       {
-        "rg" : {
+        "rg_uri" : {
           "type" : "uri",
-          "value" : "http://example.com/scale-500"
+          "value" : "https://linked.data.gov.au/dataset/bdr/dataset/ce0a94b1-317f-4f99-9fb2-b212467777d7"
         },
-        "op" : {
-          "type" : "uri",
-          "value" : "http://example.com/SamplesCount"
+        "rg_label" : {
+          "type" : "literal",
+          "value" : "Tasmanian Natural Values Atlas National Snapshot - Finn Adams Personal Observations"
         },
-        "val" : {
+        "ObservationsCount" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
-          "value" : "500"
+          "value" : "12"
         },
-        "t" : {
-          "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
-          "type" : "literal",
-          "value" : "2024-02-15T04:13:31.330Z"
-        }
-      },
-      {
-        "rg" : {
-          "type" : "uri",
-          "value" : "http://example.com/scale-500"
-        },
-        "op" : {
-          "type" : "uri",
-          "value" : "http://example.com/ObservationsCount"
-        },
-        "val" : {
+        "DatasetsCount" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
           "type" : "literal",
-          "value" : "521"
+          "value" : "1"
         },
-        "t" : {
+        "SamplesCount" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "6"
+        },
+        "SamplingsCount" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "type" : "literal",
+          "value" : "6"
+        },
+        "queryRunTime" : {
           "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
           "type" : "literal",
-          "value" : "2024-02-15T04:13:31.330Z"
+          "value" : "2024-04-05T02:35:32.886Z"
+        },
+        "dateCreated" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+          "type" : "literal",
+          "value" : "2024-03-25T03:53:47.130Z"
         }
       }
     ]

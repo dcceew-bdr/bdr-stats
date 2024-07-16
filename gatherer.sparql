@@ -11,7 +11,7 @@ SELECT
   (SUM(IF(?op = bdr-obsprops:DatasetsCount, ?val, 0)) AS ?DatasetsCount)
   (SUM(IF(?op = bdr-obsprops:SamplesCount, ?val, 0)) AS ?SamplesCount)
   (SUM(IF(?op = bdr-obsprops:SamplingsCount, ?val, 0)) AS ?SamplingsCount)
-  (NOW() as ?query_run_time)
+  (NOW() as ?queryRunTime)
   ?dateCreated
 WHERE {
   GRAPH olis:SystemGraph {

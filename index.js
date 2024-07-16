@@ -66,6 +66,7 @@ document.addEventListener("DOMContentLoaded", function () {
             datasetLabel: item.rg_label.value, // The label of the dataset
             rdfDatasets: item.DatasetsCount.value, // The count of RDF datasets
             samples: item.SamplesCount.value, // The count of samples
+            samplings: item.SamplingsCount.value, // The count of samples
             observations: item.ObservationsCount.value, // The count of observations
             dateCreated: item.dateCreated.value // The date created
         }));
