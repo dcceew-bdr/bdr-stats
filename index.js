@@ -14,6 +14,10 @@ function pad(pad, str, padLeft) {
   }
 }
 
+let showDetailedStatsSection = function () {
+    document.getElementById("detailedStatsSection").style.display = "block";
+}
+
 
 let myShowButtonPressed = function () {
     let myHash = "ef536f823d3b55c2d9d06972f88c58b1";
@@ -21,9 +25,12 @@ let myShowButtonPressed = function () {
     let hash = CryptoJS.MD5(password).toString();
     if (hash === myHash) {
         const useTestData = false; // Set to true if you want to use test data
+        showDetailedStatsSection()
         showStats('stats', useTestData);
     }
 }
+
+
 
 document.addEventListener("DOMContentLoaded", function () {
     const useTestData = false; // Set to true if you want to use test data
@@ -51,8 +58,8 @@ let showStats = function (kind, useTestData = false) {
                 updateTable(`#${type}-template-target`, transformedData, `${type}-template`);
 
                 // Update last updated time, if present
-                if (jsonData.results.bindings.length > 0 && jsonData.results.bindings[0].query_run_time) {
-                    const queryRunTime = jsonData.results.bindings[0].query_run_time.value;
+                if (jsonData.results.bindings.length > 0 && jsonData.results.bindings[0].queryRunTime) {
+                    const queryRunTime = jsonData.results.bindings[0].queryRunTime.value;
                     updateLastUpdatedTime(queryRunTime, type);
                 }
             })

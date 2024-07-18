@@ -33,7 +33,7 @@
     <a href="https://abis.dev.kurrawong.ai">ABIS Portal</a>
 </div>
 <div id="content">
-    <h1 class="text-4xl pb-4">BDR Stats</h1>
+    <h1 class="text-4xl pb-4">BDR Statistics Dashboard</h1>
     <section style="min-width:500px; max-width: 40%">
         <h3>About</h3>
         <p>
@@ -44,13 +44,14 @@
         <p>
             For any BDR-specific questions, please contact:
         </p>
-        <p style="margin-left:100px;">
+        <p style="margin-left:80px;">
             <strong>BDR Team</strong><br/>
             <a href="mailto:bdr@dcceew.gov.au">bdr@dcceew.gov.au</a>
         </p>
     </section>
     <section>
-        <h3>BDR Statistics <span id="totalsLastUpdatedTime" style="font-style: italic;"></span></h3>
+        <h3>Overall Statistics</h3>
+        <p><span id="totalsLastUpdatedTime" style="font-style: italic;"></span></p>
         <table id="totals">
             <thead>
             <tr>
@@ -76,8 +77,9 @@
         </tr>
         {{/each}}
     </script>
-    <section>
-        <h3>Dataset Statistics <span id="statsLastUpdatedTime" style="font-style: italic;"></span></h3>
+    <section id="detailedStatsSection" style="display:none">
+        <h3>Detailed Dataset-level Statistics</h3>
+        <p><span id="statsLastUpdatedTime" style="font-style: italic;"></span></p>
         <table id="stats">
             <thead>
             <tr>
