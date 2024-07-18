@@ -4,8 +4,11 @@
     <meta charset="UTF-8">
     <title>BDR Stats</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.2.0/core.min.js" integrity="sha512-XV6Atywd9O/oxwyzpbw3HX6KuHroyHe7bWfHAWR6K+FQCu8g98hmj3u7r+7wK42OZlugD/QhB/VfogqTCTWq1w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.2.0/md5.min.js" integrity="sha512-ENWhXy+lET8kWcArT6ijA6HpVEALRmvzYBayGL6oFWl96exmq8Fjgxe2K6TAblHLP75Sa/a1YjHpIZRt+9hGOQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.2.0/enc-base64url.min.js" integrity="sha512-/h3Jrqg+eAljgR3crzcpfhySZ6JkrKwYVTkr6gvllVDoJ82ulbUZxphdrZYeKAK1MZE2NdCa2/3ZxS8vVzraaw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <!-- Include Handlebars library via CDN -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.8/handlebars.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.8/handlebars.min.js" integrity="sha512-E1dSFxg+wsfJ4HKjutk/WaCzK7S2wv1POn1RRPGh8ZK+ag9l244Vqxji3r6wgz9YBf6+vhQEYJZpSjqWFPg9gg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 <body>
 <div id="top">
@@ -59,6 +62,11 @@
             <!-- Totals stats rows will be populated here by the JavaScript -->
             </tbody>
         </table>
+        <div>
+            <label for="statsPassword">Password:</label>
+            <input type="password" id="statsPassword" name="statsPassword">
+            <button onclick="myShowButtonPressed()">Show Detailed Stats</button>
+        </div>
     </section>
     <script id="totals-template" type="text/x-handlebars-template">
         {{#each items}}
@@ -74,7 +82,7 @@
             <thead>
             <tr>
                 <th>Dataset</th>
-                <th>RDF Datasets</th>
+                <!--<th>RDF Datasets</th>-->
                 <th>Samples</th>
                 <th>Samplings</th>
                 <th>Observations</th>
@@ -89,8 +97,10 @@
     <script id="stats-template" type="text/x-handlebars-template">
         {{#each items}}
         <tr>
-            <td><a href="{{datasetUri}}" target="_blank">{{datasetLabel}}</a></td>
-            <td>{{rdfDatasets}}</td>
+            {{#if linkItems}}<td><a href="{{datasetUri}}" target="_blank">{{datasetLabel}}</a></td>
+            {{else}}<td>{{datasetLabel}}</td>
+            {{/if}}
+            <!--<td>{{rdfDatasets}}</td>-->
             <td>{{samples}}</td>
             <td>{{samplings}}</td>
             <td>{{observations}}</td>

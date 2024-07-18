@@ -4,9 +4,33 @@ let currentSort = {
     ascending: false // Assuming the default sort is descending
 };
 
+function pad(pad, str, padLeft) {
+  if (typeof str === 'undefined')
+    return pad;
+  if (padLeft) {
+    return (pad + str).slice(-pad.length);
+  } else {
+    return (str + pad).substring(0, pad.length);
+  }
+}
+
+
+let myShowButtonPressed = function () {
+    let myHash = "ef536f823d3b55c2d9d06972f88c58b1";
+    let password = document.getElementById("statsPassword").value;
+    let hash = CryptoJS.MD5(password).toString();
+    if (hash === myHash) {
+        const useTestData = false; // Set to true if you want to use test data
+        showStats('stats', useTestData);
+    }
+}
 
 document.addEventListener("DOMContentLoaded", function () {
     const useTestData = false; // Set to true if you want to use test data
+    showStats('totals', useTestData);
+});
+
+let showStats = function (kind, useTestData = false) {
 
     // This function fetches data based on the 'type' and updates the UI
     function fetchDataAndUpdateUI(type) {
@@ -74,9 +98,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     // Execute the fetchDataAndUpdateUI function for both 'totals' and 'stats'
-    fetchDataAndUpdateUI('totals');
-    fetchDataAndUpdateUI('stats');
-});
+    fetchDataAndUpdateUI(kind);
+}
 
 
 function sortColumn(elementId, columnIndex) {
