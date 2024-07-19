@@ -20,7 +20,7 @@
                 </div>
                 <div id="title">
                     <h1>Biodiversity Data Repository<br>
-                    <small>Statistics Viewer</small> 
+                    <small>Statistics Viewer</small>
                     </h1>
                 </div>
             </div>
@@ -99,6 +99,7 @@
     </section>
     <script id="stats-template" type="text/x-handlebars-template">
         {{#each items}}
+        {{#if hasDatasets}}
         <tr>
             {{#if linkItems}}<td><a href="{{datasetUri}}" target="_blank">{{datasetLabel}}</a></td>
             {{else}}<td>{{datasetLabel}}</td>
@@ -109,6 +110,7 @@
             <td>{{observations}}</td>
             <td style="white-space: nowrap;">{{dateCreated}}</td>
         </tr>
+        {{/if}}
         {{/each}}
     </script>
 </div>

@@ -96,6 +96,7 @@ let showStats = function (kind, useTestData = false) {
             datasetUri: item.rg_uri.value, // Include the URI for the hyperlink
             datasetLabel: item.rg_label.value, // The label of the dataset
             rdfDatasets: item.DatasetsCount.value, // The count of RDF datasets
+            hasDatasets: parseInt(item.DatasetsCount.value) > 0, // Flag to indicate if the dataset has datasets
             samples: item.SamplesCount.value, // The count of samples
             samplings: item.SamplingsCount.value, // The count of samples
             observations: item.ObservationsCount.value, // The count of observations
