@@ -84,12 +84,12 @@
         <table id="stats">
             <thead>
             <tr>
-                <th>Dataset</th>
+                <th onclick="sortColumn('stats', 0)" class="sortable">Dataset</th>
                 <!--<th>RDF Datasets</th>-->
-                <th>Samples</th>
-                <th>Samplings</th>
-                <th>Observations</th>
-                <th onclick="sortColumn('stats', 4)" class="sortable">Load Date</th>
+                <th onclick="sortColumn('stats', 1)" class="sortable">Samples</th>
+                <th onclick="sortColumn('stats', 2)" class="sortable">Samplings</th>
+                <th onclick="sortColumn('stats', 3)" class="sortable">Observations</th>
+                <th onclick="sortColumn('stats', 4)" class="sortable sort-descending">Load Date</th>
             </tr>
             </thead>
             <tbody id="stats-template-target">
