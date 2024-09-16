@@ -41,7 +41,7 @@ let showStats = function (kind, useTestData = false) {
 
     // This function fetches data based on the 'type' and updates the UI
     function fetchDataAndUpdateUI(type) {
-        const baseUrl = useTestData ? '' : 'https://stbdrprodstatsdorkqh.blob.core.windows.net/statscontainer/';
+        const baseUrl = useTestData ? '' : 'https://stbdrprodstatsudynhh.blob.core.windows.net/statscontainer/';
         const url = `${baseUrl}${type}.json`;
 
         fetch(url)
