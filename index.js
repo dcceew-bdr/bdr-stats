@@ -20,7 +20,7 @@ let showDetailedStatsSection = function () {
 
 
 let myShowButtonPressed = function () {
-    let myHash = "ef536f823d3b55c2d9d06972f88c58b1";
+    let myHash = "d47fc911a428273e4a10bdbae29d088a";
     let password = document.getElementById("statsPassword").value;
     let hash = CryptoJS.MD5(password).toString();
     if (hash === myHash) {
@@ -93,9 +93,15 @@ let showStats = function (kind, useTestData = false) {
 
     function transformStatsData(jsonData) {
         return jsonData.results.bindings.map(item => ({
-            datasetUri: item.rg_uri.value, // Include the URI for the hyperlink
-            datasetLabel: item.rg_label.value, // The label of the dataset
-            rdfDatasets: item.DatasetsCount.value, // The count of RDF datasets
+            datasetUri: item.ds.value, // Include the URI for the hyperlink
+            datasetLabel: item.ds_label.value, // The label of the dataset
+            schemaDatasets: item.DatasetsCount.value, // The count of schema datasets
+            rdfSubmissions: item.SubmissionCount.value, // The count of RDF submissions
+            occurrences: item.OccurrencesCount.value, // The count of occurrences
+            biodiversityRecords: item.BiodiversityRecordsCount.value, // The count of biodiversity records
+            sites: item.Sitecount.value,
+            siteVisits: item.SiteVisitCount.value,
+            surveys: item.SurveyCount.value,
             hasDatasets: parseInt(item.DatasetsCount.value) > 0, // Flag to indicate if the dataset has datasets
             samples: item.SamplesCount.value, // The count of samples
             samplings: item.SamplingsCount.value, // The count of samples

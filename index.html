@@ -28,17 +28,15 @@
     </div>
 </div>
 <div id="main-nav">
-    <a href="http://bdr.gov.au">BDR Homepage</a>
-    <a href="https://stats.bdr.gov.au">BDR Stats</a>
-    <a href="https://vocabs.bdr.gov.au">BDR Vocabularies</a>
-    <a href="https://abis.dev.kurrawong.ai">ABIS Portal</a>
+    <a href="https://bdr.gov.au">BDR Homepage</a>
+    <a href="https://resources.bdr.gov.au">BDR Resources</a>
 </div>
 <div id="content">
     <h1 class="text-4xl pb-4">BDR Statistics Dashboard - <small style="color: red">Preview</small></h1>
     <section style="min-width:500px; max-width: 50%">
         <h3>About</h3>
         <p>
-            This web page contains statistics about data within <a href="https://bdrtesting.net" class="">Biodiversity
+            This web page contains statistics about data within <a href="https://bdr.gov.au/" class="">Biodiversity
             Data Repository (BDR)</a> managed by the <a href="https://www.dcceew.gov.au">Department of Climate Change,
             Energy, the Environment and Water (DCCEEW)</a>.
         </p>
@@ -86,10 +84,16 @@
             <tr>
                 <th onclick="sortColumn('stats', 0)" class="sortable">Dataset</th>
                 <!--<th>RDF Datasets</th>-->
-                <th onclick="sortColumn('stats', 1)" class="sortable">Samples</th>
-                <th onclick="sortColumn('stats', 2)" class="sortable">Samplings</th>
-                <th onclick="sortColumn('stats', 3)" class="sortable">Observations</th>
-                <th onclick="sortColumn('stats', 4)" class="sortable sort-descending">Load Date</th>
+                <th onclick="sortColumn('stats', 1)" class="sortable">Submissions</th>
+                <th onclick="sortColumn('stats', 2)" class="sortable">Occurrences</th>
+                <th onclick="sortColumn('stats', 3)" class="sortable">Records</th>
+                <th onclick="sortColumn('stats', 4)" class="sortable">Sites</th>
+                <th onclick="sortColumn('stats', 5)" class="sortable">SiteVisits</th>
+                <th onclick="sortColumn('stats', 6)" class="sortable">Surveys</th>
+                <th onclick="sortColumn('stats', 7)" class="sortable">Samples</th>
+                <th onclick="sortColumn('stats', 8)" class="sortable">Samplings</th>
+                <th onclick="sortColumn('stats', 9)" class="sortable">Observations</th>
+                <th onclick="sortColumn('stats', 10)" class="sortable sort-descending">Load Date</th>
             </tr>
             </thead>
             <tbody id="stats-template-target">
@@ -104,7 +108,13 @@
             {{#if linkItems}}<td><a href="{{datasetUri}}" target="_blank">{{datasetLabel}}</a></td>
             {{else}}<td>{{datasetLabel}}</td>
             {{/if}}
-            <!--<td>{{rdfDatasets}}</td>-->
+            <!--<td>{{schemaDatasets}}</td>-->
+            <td>{{rdfSubmissions}}</td>
+            <td>{{occurrences}}</td>
+            <td>{{biodiversityRecords}}</td>
+            <td>{{sites}}</td>
+            <td>{{siteVisits}}</td>
+            <td>{{surveys}}</td>
             <td>{{samples}}</td>
             <td>{{samplings}}</td>
             <td>{{observations}}</td>
