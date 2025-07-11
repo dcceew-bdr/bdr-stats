@@ -1,21 +1,26 @@
 PREFIX bdr-obsprops: <https://linked.data.gov.au/dataset/bdr/obsprops/>
-PREFIX olis: <https://olis.dev/>
 PREFIX schema: <https://schema.org/>
 PREFIX sosa: <http://www.w3.org/ns/sosa/>
 PREFIX dcterms: <http://purl.org/dc/terms/>
 
 SELECT
-  ?rg_uri
-  ?rg_label
+  ?ds
+  ?ds_label
   (SUM(IF(?op = bdr-obsprops:ObservationsCount, ?val, 0)) AS ?ObservationsCount)
   (SUM(IF(?op = bdr-obsprops:DatasetsCount, ?val, 0)) AS ?DatasetsCount)
   (SUM(IF(?op = bdr-obsprops:SamplesCount, ?val, 0)) AS ?SamplesCount)
   (SUM(IF(?op = bdr-obsprops:SamplingsCount, ?val, 0)) AS ?SamplingsCount)
+  (SUM(IF(?op = bdr-obsprops:OccurrencesCount, ?val, 0)) AS ?OccurrencesCount)
+  (SUM(IF(?op = bdr-obsprops:SubmissionCount, ?val, 0)) AS ?SubmissionCount)
+  (SUM(IF(?op = bdr-obsprops:BiodiversityRecordsCount, ?val, 0)) AS ?BiodiversityRecordsCount)
+  (SUM(IF(?op = bdr-obsprops:SiteCount, ?val, 0)) AS ?SiteCount)
+  (SUM(IF(?op = bdr-obsprops:SiteVisitCount, ?val, 0)) AS ?SiteVisitCount)
+  (SUM(IF(?op = bdr-obsprops:SurveyCount, ?val, 0)) AS ?SurveyCount)
   (NOW() as ?queryRunTime)
   ?dateCreated
 WHERE {
-  GRAPH olis:SystemGraph {
-    ?rg_uri sosa:isFeatureOfInterestOf [
+  GRAPH <urn:bdr:stats> {
+    ?ds sosa:isFeatureOfInterestOf [
         sosa:observedProperty ?op ;
         sosa:hasResult [
           schema:value ?val
@@ -23,11 +28,11 @@ WHERE {
      ]
   }
   FILTER EXISTS {
-    ?rg_uri a olis:RealGraph .
+    ?ds a schema:Dataset .
   }
-  OPTIONAL { ?rg_uri dcterms:title ?rg_label_title }
-  OPTIONAL { ?rg_uri dcterms:identifier ?rg_label_id }
-  OPTIONAL { ?rg_uri schema:dateCreated ?dateCreated }
-  BIND(COALESCE(?rg_label_title, ?rg_label_id) AS ?rg_label)
+  OPTIONAL { ?ds schema:name ?ds_name }
+  OPTIONAL { ?ds schema:identifier ?ds_id }
+  OPTIONAL { ?ds schema:dateCreated ?dateCreated }
+  BIND(COALESCE(?ds_name, ?ds_id) AS ?ds_label)
 }
-GROUP BY ?rg_uri ?rg_label ?dateCreated
+GROUP BY ?ds ?ds_label ?dateCreated
