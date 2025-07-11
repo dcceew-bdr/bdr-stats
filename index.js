@@ -93,16 +93,16 @@ let showStats = function (kind, useTestData = false) {
 
     function transformStatsData(jsonData) {
         return jsonData.results.bindings.map(item => ({
+            hasDatasets: parseInt(item.DatasetsCount.value) > 0, // Flag to indicate if the dataset has datasets
             datasetUri: item.ds.value, // Include the URI for the hyperlink
             datasetLabel: item.ds_label.value, // The label of the dataset
             schemaDatasets: item.DatasetsCount.value, // The count of schema datasets
             rdfSubmissions: item.SubmissionCount.value, // The count of RDF submissions
             occurrences: item.OccurrencesCount.value, // The count of occurrences
             biodiversityRecords: item.BiodiversityRecordsCount.value, // The count of biodiversity records
-            sites: item.Sitecount.value,
+            sites: item.SiteCount.value,
             siteVisits: item.SiteVisitCount.value,
             surveys: item.SurveyCount.value,
-            hasDatasets: parseInt(item.DatasetsCount.value) > 0, // Flag to indicate if the dataset has datasets
             samples: item.SamplesCount.value, // The count of samples
             samplings: item.SamplingsCount.value, // The count of samples
             observations: item.ObservationsCount.value, // The count of observations
